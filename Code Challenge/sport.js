@@ -23,6 +23,28 @@ var app = fetch(listAPI).then((response) => response.json()).then((data) => {
     </div>`;
             document.querySelector(".quiz").insertAdjacentHTML("beforeend", questions);
         }
+        let answers = document.querySelector(".form");
+        document.querySelector(".submit").addEventListener("click", (event) => {
+            event.preventDefault();
+            let count = 0;
+            for (let i = 0; i < data.results.length; i++) {
+                let a = "answers.answers" + i + ".value";
+                answer = eval(a);
+                let test = data.results[i].correct_answer;
+                console.log('The correct answer of question ' + `${i}` + ':', test);
+                if (answer == data.results[i].correct_answer) {
+                    count++;
+                    document.querySelector(".error" + i).innerHTML =
+                        "<p style='color:green;'>Correct</p>";
+                } else {
+                    document.querySelector(".error" + i).innerHTML =
+                        "<p style='color:red;'>Incorrect</p>";
+                }
+            }
+            alert("Correct answers: " + count);
+            document.querySelector(".result").textContent =
+                "Correct    " + count + "/" + data.results.length;
+        });
     });
 
-//em chưa làm được phần xử lí ạ, mới xong giao diện thôi ạ, có gì anh chị châm chước cho em với ạ :(
+
