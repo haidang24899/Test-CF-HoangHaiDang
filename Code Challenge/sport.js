@@ -34,11 +34,9 @@ var app = fetch(listAPI).then((response) => response.json()).then((data) => {
                 console.log('The correct answer of question ' + `${i + 1}` + ':', test);
                 if (answer == data.results[i].correct_answer) {
                     count++;
-                    document.querySelector(".error" + i).innerHTML =
-                        "<p style='color:green;'>Correct</p>";
+                    document.querySelector(".error" + i).innerHTML = "<p style='color:green;'>Correct</p>";
                 } else {
-                    document.querySelector(".error" + i).innerHTML =
-                        "<p style='color:red;'>Incorrect</p>";
+                    document.querySelector(".error" + i).innerHTML = "<p style='color:red;'>Incorrect</p>";
                 }
             }
             alert("Correct answers: " + count);
