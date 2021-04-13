@@ -2,7 +2,7 @@ const listAPI = "https://opentdb.com/api.php?amount=5&category=21&difficulty=eas
 
 var app = fetch(listAPI).then((response) => response.json()).then((data) => {
         for (var i = 0; i < data.results.length; i++) {
-            var questions = `<div style ="text-align: center">
+            var game = `<div style ="text-align: center">
             -------------------------------------------------
         <h2 style = "color: coral">Question ${i + 1}</h2>
         <div class="question">${data.results[i].question}</div>
@@ -21,7 +21,7 @@ var app = fetch(listAPI).then((response) => response.json()).then((data) => {
         
         <div class="error${i}"></div>
     </div>`;
-            document.querySelector(".quiz").insertAdjacentHTML("beforeend", questions);
+            document.querySelector(".questions").insertAdjacentHTML("beforeend", game);
         }
         let answers = document.querySelector(".form");
         document.querySelector(".submit").addEventListener("click", (event) => {
